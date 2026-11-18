@@ -421,6 +421,32 @@
     translate: 0 0;
   }
 }
+/* Keep the portrait sharp in mobile compositors, including paused entrances. */
+@media (max-width: 700px), (hover: none) and (pointer: coarse) {
+  .studio-scene,
+  .studio-tools {
+    transform-style: flat;
+  }
+  .studio-scene,
+  .studio-tool {
+    transform: none;
+  }
+  .studio-character {
+    filter: none;
+    transform: none;
+    animation-name: studio-arrive-mobile;
+  }
+}
+@keyframes studio-arrive-mobile {
+  from {
+    opacity: 0;
+    translate: 0 25px;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
 .recognition {
   background: #c8ab80;
   color: #29261f;
