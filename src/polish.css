@@ -1,0 +1,312 @@
+/* Final legibility, focus, and motion refinements. */
+[data-core-mode="1"] .orbit-fallback b {
+  filter: hue-rotate(65deg) saturate(0.65);
+}
+.project-dialog .dialog-close {
+  position: sticky;
+  top: 14px;
+  float: right;
+  margin: 14px 14px -58px 0;
+}
+@media (max-width: 767px) {
+  .explorer-dialog {
+    top: var(--chat-top, 0px);
+    height: var(--chat-height, 100dvh);
+    max-height: var(--chat-height, 100dvh);
+  }
+  .explorer-dialog .dialog-shell {
+    height: var(--chat-height, 100dvh);
+  }
+}
+.skip-link {
+  opacity: 0;
+  pointer-events: none;
+}
+.skip-link:focus {
+  opacity: 1;
+  pointer-events: auto;
+}
+@media (max-width: 767px) {
+  .network-art .tag-bottom {
+    display: none;
+  }
+}
+.section-label > span {
+  color: #87907e;
+}
+.light-section .section-label > span,
+.light-section .muted,
+.education .label,
+.education p,
+.about-bottom,
+.principle button .label,
+.principle p {
+  color: #59634e;
+}
+.recognition .section-label > span,
+.recognition-copy p,
+.sih small {
+  color: #4b573a;
+}
+.skill-tabs button > span {
+  color: #8b997b;
+}
+.map-caption {
+  color: #8a9b76;
+}
+.coord-one > span {
+  color: #8c947f;
+}
+.hero-bottom .muted {
+  color: #8f9883;
+}
+.nav-intro .label,
+.nav-dialog nav a > .label,
+.nav-bottom .label {
+  color: #536348;
+}
+.brand-period {
+  font-size: 7px;
+}
+.project-tech span {
+  font-size: 10px;
+}
+.hero-description {
+  font-size: 14px;
+}
+.heading-row > p,
+.section-description {
+  font-size: 14px;
+}
+.about-copy > p,
+.timeline-details li,
+.skill-detail p,
+.principle p {
+  font-size: 14px;
+}
+.timeline-summary {
+  font-size: 17px;
+}
+.recognition-copy p {
+  font-size: 13px;
+}
+.education h3 {
+  font-size: 13px;
+}
+.education p {
+  font-size: 11px;
+}
+.skill-detail {
+  min-height: 170px;
+}
+.contact-ai {
+  font-size: 12px;
+}
+.detail-note {
+  color: #a4b395;
+}
+.detail-actions {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.dock-menu {
+  border-right: 1px solid #ffffff20;
+  color: #b8c9a4;
+}
+.utility-dock button {
+  min-height: 40px;
+}
+.light-section a:focus-visible,
+.light-section button:focus-visible,
+.recognition summary:focus-visible,
+.nav-dialog a:focus-visible,
+.nav-dialog button:focus-visible {
+  outline-color: #384a28;
+}
+.nav-dialog[open] nav a {
+  animation: nav-enter 0.7s var(--ease) both;
+}
+.nav-dialog[open] nav a:nth-child(2) {
+  animation-delay: 0.035s;
+}
+.nav-dialog[open] nav a:nth-child(3) {
+  animation-delay: 0.07s;
+}
+.nav-dialog[open] nav a:nth-child(4) {
+  animation-delay: 0.105s;
+}
+.nav-dialog[open] nav a:nth-child(5) {
+  animation-delay: 0.14s;
+}
+.nav-dialog[open] nav a:nth-child(6) {
+  animation-delay: 0.175s;
+}
+.nav-dialog[open] nav a:nth-child(7) {
+  animation-delay: 0.21s;
+}
+@keyframes nav-enter {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+    clip-path: inset(0 0 100% 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    clip-path: inset(0);
+  }
+}
+.project-art {
+  transform: translateY(var(--scene-y, 0px));
+  transition: transform 0.1s linear;
+}
+.project-visual:focus-visible {
+  outline-offset: 6px;
+}
+.contact-ai button {
+  min-height: 44px;
+}
+.stage-tabs button,
+.orbit-control button {
+  min-height: 44px;
+}
+@media (max-width: 1100px) {
+  .education h3 {
+    font-size: 11px;
+  }
+  .education p {
+    font-size: 10px;
+  }
+  .about-copy > p,
+  .heading-row > p,
+  .section-description,
+  .timeline-details li,
+  .skill-detail p,
+  .principle p {
+    font-size: 13px;
+  }
+  .hero-description {
+    font-size: 13px;
+  }
+}
+@media (max-width: 767px) {
+  .hero-description {
+    font-size: 12px;
+  }
+  .heading-row > p,
+  .section-description,
+  .about-copy > p,
+  .timeline-details li,
+  .skill-detail p,
+  .principle p {
+    font-size: 13px;
+  }
+  .skill-detail {
+    min-height: 160px;
+  }
+  .education h3 {
+    font-size: 12px;
+  }
+  .education p {
+    font-size: 10px;
+  }
+  .timeline-summary {
+    font-size: 15px;
+  }
+  .recognition-copy p {
+    font-size: 12px;
+  }
+  .contact-ai {
+    font-size: 10px;
+  }
+  .utility-dock button {
+    min-height: 40px;
+    padding-inline: 10px;
+  }
+  .hero-universe {
+    top: 320px;
+  }
+  .coord-one {
+    right: 13%;
+    top: 15%;
+  }
+  .orbit-control {
+    bottom: -4px;
+  }
+  .hero-composition {
+    min-height: 775px;
+  }
+  .hero {
+    min-height: 960px;
+  }
+  .about-copy h2 {
+    font-size: 38px;
+  }
+  .chat-welcome > p,
+  .answer p {
+    font-size: 13px;
+  }
+  .chat-welcome h3 {
+    font-size: 21px;
+  }
+  .question {
+    font-size: 12px;
+  }
+  .detail-description {
+    font-size: 13px;
+  }
+  .detail-grid p,
+  .stage-explanation {
+    font-size: 12px;
+  }
+  .detail-note {
+    font-size: 10px;
+  }
+  .detail-copy > .text-link,
+  .detail-actions .text-link {
+    font-size: 11px;
+  }
+  .stage-explanation {
+    min-height: 135px;
+  }
+  .dialog-close {
+    width: 44px;
+    height: 44px;
+  }
+  .skill-tabs button {
+    min-height: 48px;
+  }
+  .local-badge {
+    font-size: 7px;
+  }
+  .chat-footnote {
+    font-size: 8px;
+  }
+}
+@media (max-width: 359px) {
+  .hero-description {
+    font-size: 11px;
+  }
+  .hero-composition {
+    min-height: 700px;
+  }
+  .hero {
+    min-height: 880px;
+  }
+  .hero-universe {
+    top: 285px;
+  }
+  .education h3 {
+    font-size: 10px;
+  }
+  .education p {
+    font-size: 9px;
+  }
+  .about-copy h2 {
+    font-size: 34px;
+  }
+  .contact-ai {
+    font-size: 9px;
+  }
+}
