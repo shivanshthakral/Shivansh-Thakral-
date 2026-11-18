@@ -1,0 +1,1321 @@
+/* The second half: field notes, an engineering studio, and an open letter. */
+.journey {
+  background: #211f1a;
+  border-top: 1px solid #c4a16b25;
+}
+.journey-layout {
+  display: grid;
+  grid-template-columns: 0.75fr 1.5fr;
+  gap: 8%;
+  align-items: start;
+}
+.journey-notebook {
+  position: sticky;
+  top: 150px;
+  perspective: 900px;
+  padding: 12px 12px 35px;
+}
+.notebook-pages {
+  position: absolute;
+  inset: 25px 10px 50px;
+  background: #bda680;
+  transform: rotate(4deg);
+  box-shadow: 0 12px 45px #0003;
+}
+.notebook-page {
+  background: #e8ddc6;
+  color: #302b22;
+  padding: 25px;
+  position: relative;
+  overflow: hidden;
+  transform: rotate(-3deg);
+  animation: note-turn 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+}
+.notebook-top,
+.notebook-bottom {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  font-size: 6px;
+  letter-spacing: 0.1em;
+  color: #675b45;
+}
+.notebook-top {
+  border-bottom: 1px solid #88745750;
+  padding-bottom: 18px;
+}
+.notebook-year {
+  font-family: "Instrument Serif";
+  font-size: 108px;
+  line-height: 1.1;
+  letter-spacing: -0.06em;
+  color: #bba681;
+  margin-top: 18px;
+}
+.notebook-icon {
+  position: absolute;
+  right: 26px;
+  top: 92px;
+  color: #7c6849;
+}
+.notebook-page h3 {
+  font-size: 25px;
+  line-height: 1.15;
+  letter-spacing: -0.04em;
+  font-weight: 500;
+  max-width: 220px;
+  margin: 12px 0 20px;
+}
+.notebook-rule {
+  height: 1px;
+  background: #8a715147;
+  position: relative;
+}
+.notebook-rule:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: -2px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #a27f45;
+}
+.notebook-page > p {
+  font-family: "Instrument Serif";
+  font-style: italic;
+  font-size: 22px;
+  color: #746044;
+  margin: 20px 0 30px;
+}
+.notebook-bottom {
+  margin-top: auto;
+  align-items: center;
+}
+.notebook-bottom > span:last-child {
+  font-family: "Instrument Serif";
+  font-size: 27px;
+  letter-spacing: -0.08em;
+}
+.notebook-caption {
+  display: block;
+  font-size: 6px;
+  letter-spacing: 0.14em;
+  color: #baa990;
+  margin-top: 30px;
+  text-align: center;
+}
+@keyframes note-turn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) rotateY(-18deg) rotate(-6deg);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(-3deg);
+  }
+}
+.journey .timeline {
+  border-top: 1px solid #b09a7438;
+}
+.journey .timeline-toggle {
+  gap: 16px;
+  padding: 28px 0;
+}
+.journey .timeline-year {
+  width: 55px;
+  flex-shrink: 0;
+  font-size: 9px;
+  color: #c6ae89;
+}
+.journey .timeline-node {
+  margin-right: 8px;
+  flex-shrink: 0;
+}
+.journey .timeline-company > span {
+  font-size: 24px;
+}
+.journey .timeline-company small {
+  font-size: 10px;
+  color: #b7ad9a;
+}
+.journey .timeline-date {
+  display: none;
+}
+.journey .timeline-details {
+  padding: 0 0 30px 86px;
+}
+.journey .timeline-summary {
+  font-family: "Instrument Serif";
+  font-size: 24px;
+  font-style: italic;
+  color: #dfc7a1;
+  line-height: 1.2;
+}
+.journey .timeline-details li {
+  color: #b8b0a2;
+  font-size: 12px;
+}
+.journey .timeline-item.expanded {
+  border-color: #c49a524f;
+}
+.journey .expanded .timeline-node {
+  background: #e9bc75;
+  border-color: #e9bc75;
+}
+.journey .expanded .timeline-node:after {
+  border-color: #e9bc7544;
+}
+.journey .timeline-toggle > svg {
+  color: #c5af8b;
+}
+.constellation {
+  background: #191815;
+  padding-top: 100px;
+}
+.constellation-layout {
+  gap: 8%;
+  grid-template-columns: 0.85fr 1.15fr;
+  align-items: center;
+}
+.constellation-copy h2 {
+  font-size: clamp(42px, 4.5vw, 65px);
+}
+.constellation .section-description,
+.skill-detail p {
+  color: #b8ae9d;
+  font-size: 12px;
+  line-height: 1.9;
+}
+.skill-tabs {
+  border-color: #bba37a36;
+}
+.skill-tabs button {
+  color: #b0a591;
+}
+.skill-tabs button > span {
+  color: #b8a281;
+}
+.skill-tabs button[aria-selected="true"] {
+  color: #e6b87a;
+  border-color: #e6b87a;
+}
+.skill-detail .label,
+.skill-project {
+  color: #d3ba95;
+}
+.tool-studio {
+  perspective: 1200px;
+  --studio-x: 0deg;
+  --studio-y: 0deg;
+  min-width: 0;
+}
+.studio-scene {
+  height: 560px;
+  position: relative;
+  background:
+    radial-gradient(ellipse at 50% 68%, #55412750, transparent 65%),
+    linear-gradient(135deg, #24211b, #191814);
+  border: 1px solid #b3976729;
+  isolation: isolate;
+  transform-style: preserve-3d;
+  transform: rotateY(var(--studio-x)) rotateX(var(--studio-y));
+  transition: transform 0.3s ease-out;
+  overflow: hidden;
+}
+.studio-label {
+  position: absolute;
+  left: 25px;
+  top: 24px;
+  font-size: 6px;
+  color: #bdab8e;
+  z-index: 4;
+}
+.studio-word {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 98px;
+  text-align: center;
+  font-weight: 650;
+  font-size: 100px;
+  letter-spacing: -0.09em;
+  color: #c3a36616;
+  z-index: -1;
+}
+.studio-floor {
+  position: absolute;
+  left: 12%;
+  right: 12%;
+  bottom: 80px;
+  height: 130px;
+  border: 1px solid #a68e6350;
+  background: linear-gradient(#5a452422, #352a1d11);
+  transform: perspective(450px) rotateX(62deg);
+  box-shadow: 0 25px 50px #0004;
+  z-index: -1;
+}
+.studio-character {
+  position: absolute;
+  bottom: 60px;
+  left: 16%;
+  width: 68%;
+  height: 425px;
+  object-fit: contain;
+  object-position: center bottom;
+  filter: drop-shadow(0 18px 25px #0003);
+  transform: translateZ(35px);
+  animation: studio-arrive 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.studio-tools {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+}
+.studio-tool {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 10px 12px;
+  background: #302a20f0;
+  border: 1px solid #b89a5e55;
+  min-height: 52px;
+  color: #dfd4c0;
+  box-shadow: 0 10px 30px #0003;
+  animation: studio-tile 0.8s both;
+  animation-delay: var(--tile-delay);
+  transform: translateZ(60px);
+  transition:
+    background 0.3s,
+    border-color 0.3s,
+    translate 0.3s;
+}
+.studio-tool:hover,
+.studio-tool[aria-pressed="true"] {
+  background: #56422a;
+  border-color: #e3b879;
+  translate: 0 -4px;
+}
+.studio-tool > b {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #b49a7444;
+  display: grid;
+  place-items: center;
+  font: 11px monospace;
+  color: #e5bd80;
+}
+.studio-tool > span {
+  font-size: 9px;
+  white-space: nowrap;
+}
+.studio-tool > i {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #d6ac6a;
+  opacity: 0.3;
+  margin-left: 2px;
+}
+.studio-tool[aria-pressed="true"] > i {
+  opacity: 1;
+}
+.tool-0 {
+  left: 7%;
+  top: 17%;
+}
+.tool-1 {
+  left: 2%;
+  top: 37%;
+}
+.tool-2 {
+  left: 5%;
+  top: 61%;
+}
+.tool-3 {
+  right: 3%;
+  top: 27%;
+}
+.tool-4 {
+  right: 4%;
+  top: 54%;
+}
+.studio-note {
+  position: absolute;
+  right: 25px;
+  bottom: 18px;
+  font: italic 22px/1 "Instrument Serif";
+  color: #c7a977;
+  rotate: -5deg;
+}
+.studio-note em {
+  font-weight: 400;
+}
+.studio-insight {
+  padding: 24px 0 18px;
+  min-height: 105px;
+}
+.studio-insight .label {
+  font-size: 7px;
+  color: #dab987;
+}
+.studio-insight p {
+  font-size: 11px;
+  line-height: 1.8;
+  color: #b8ad99;
+  max-width: 420px;
+  margin-top: 10px;
+}
+.studio-project {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-top: 1px solid #bba37a36;
+  border-bottom: 1px solid #bba37a36;
+  width: 100%;
+  padding: 17px 0;
+  font-size: 11px;
+  text-align: left;
+  color: #e6d8c0;
+}
+.studio-project > span {
+  font-size: 6px;
+  letter-spacing: 0.08em;
+  margin-right: auto;
+  color: #baa789;
+}
+.studio-project svg {
+  color: #e0b578;
+}
+.studio-1 .studio-scene {
+  background:
+    radial-gradient(ellipse at 50% 68%, #34514540, transparent 65%), #1c211c;
+}
+.studio-2 .studio-scene {
+  background:
+    radial-gradient(ellipse at 50% 68%, #5b3d5740, transparent 65%), #221c22;
+}
+@keyframes studio-arrive {
+  from {
+    opacity: 0;
+    translate: 0 25px;
+    filter: blur(8px);
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+    filter: drop-shadow(0 18px 25px #0003);
+  }
+}
+@keyframes studio-tile {
+  from {
+    opacity: 0;
+    translate: 0 30px;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+.recognition {
+  background: #c8ab80;
+  color: #29261f;
+  position: relative;
+  isolation: isolate;
+}
+.recognition:before {
+  content: "";
+  position: absolute;
+  inset: 20px;
+  border: 1px solid #6d512421;
+  pointer-events: none;
+  z-index: -1;
+}
+.recognition .section-label,
+.recognition .section-label > span {
+  color: #53452f;
+}
+.recognition-main {
+  gap: 10%;
+  margin-top: 65px;
+}
+.rank {
+  position: relative;
+  border-block: 1px solid #6d512440;
+  padding: 24px 0;
+}
+.rank .rank-edition {
+  display: block;
+  margin-bottom: 38px;
+  font-size: 7px;
+  letter-spacing: 0.12em;
+  color: #5b492e;
+}
+.rank > .label {
+  color: #51422e;
+}
+.rank > div {
+  font-family: "Instrument Serif";
+  font-size: clamp(160px, 19vw, 280px);
+  letter-spacing: -0.06em;
+  color: #493824;
+  text-shadow:
+    1px 1px 0 #cbb18a,
+    2px 2px 0 #866b46,
+    3px 3px 0 #866b46,
+    4px 4px 0 #947953,
+    7px 12px 15px #6d4d2526;
+}
+.rank > div > span {
+  font-family: Manrope;
+  font-size: 8px;
+  letter-spacing: 0.14em;
+  text-shadow: none;
+  color: #4e3d26;
+}
+.recognition-copy p {
+  color: #51452f;
+  font-size: 12px;
+  line-height: 1.9;
+}
+.recognition-copy h2 {
+  font-size: clamp(40px, 4.5vw, 64px);
+}
+.awards-row {
+  margin-top: 60px;
+  border-color: #6a512a45;
+  gap: 0;
+}
+.awards-row > div {
+  position: relative;
+  padding: 30px 25px;
+  background: #e5d1ae22;
+  transition: background 0.5s;
+}
+.awards-row > div:hover {
+  background: #f1dfbe55;
+}
+.awards-row > div + div {
+  border-color: #6a512a45;
+  padding-left: 30px;
+}
+.awards-row > div > span {
+  font-family: "Instrument Serif";
+  font-size: 65px;
+  color: #443623;
+}
+.awards-row sup {
+  font-family: Manrope;
+}
+.awards-row p {
+  color: #423824;
+  font-size: 12px;
+}
+.sih small {
+  color: #5c4d34;
+}
+.award-monogram {
+  width: 70px;
+  height: 70px;
+  flex-shrink: 0;
+  border: 1px solid #7d643e60;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-family: "Instrument Serif";
+  font-size: 27px !important;
+  letter-spacing: -0.04em;
+  outline: 1px dashed #7d643e50;
+  outline-offset: 5px;
+}
+.certifications summary {
+  font-size: 9px;
+  color: #433722;
+  padding: 20px 0;
+}
+.certifications li {
+  color: #483c28;
+  border-color: #6a512a45;
+}
+.philosophy {
+  background: #e9dfcd;
+}
+.philosophy .section-label,
+.philosophy .section-label > span {
+  color: #64543c;
+}
+.philosophy h2 {
+  position: relative;
+  padding-left: 28px;
+  border-left: 1px solid #ac8c563f;
+}
+.philosophy h2:before {
+  content: "";
+  position: absolute;
+  left: -4px;
+  top: 0;
+  width: 7px;
+  height: 7px;
+  background: #a27e45;
+  border-radius: 50%;
+}
+.principles {
+  counter-reset: principle;
+}
+.principle {
+  border-color: #a7947455;
+  padding-inline: 0;
+  transition:
+    padding 0.4s,
+    background 0.4s;
+}
+.principle:has(button[aria-expanded="true"]) {
+  padding-inline: 20px;
+  background: #fff8ea55;
+  border-left: 2px solid #a27e45;
+}
+.principle button {
+  font-size: 18px;
+}
+.principle button .label,
+.principle p {
+  color: #675b46;
+}
+.principle p {
+  line-height: 1.85;
+  padding-bottom: 25px;
+}
+.contact {
+  background:
+    radial-gradient(ellipse at 82% 85%, #7651281f, transparent 65%), #171612;
+}
+.contact-top > .label {
+  color: #c2ae8a;
+}
+.contact h2 em {
+  color: #e0b980;
+}
+.contact-arrow {
+  border-color: #c6a56d55;
+}
+.contact-arrow:hover {
+  background: #e0b980;
+}
+.socials a {
+  color: #d3c1a3;
+}
+.copy-button {
+  color: #c4ad88;
+}
+.contact-note {
+  display: grid;
+  grid-template-columns: 1fr 1.05fr;
+  gap: 10%;
+  align-items: center;
+  padding: 75px 0 85px;
+}
+.note-intro > .label {
+  font-size: 7px;
+  color: #c6aa7c;
+}
+.note-intro h3 {
+  font-size: clamp(35px, 3.5vw, 52px);
+  font-weight: 450;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+  margin: 24px 0;
+}
+.note-intro h3 em {
+  font-family: "Instrument Serif";
+  font-weight: 400;
+  font-size: 1.12em;
+  color: #ddc296;
+}
+.note-intro > p {
+  font-size: 12px;
+  line-height: 1.9;
+  color: #b5a78f;
+}
+.note-signature {
+  font: italic 40px "Instrument Serif";
+  display: block;
+  color: #cfaa6b;
+  margin-top: 30px;
+  rotate: -6deg;
+  width: max-content;
+}
+.note-paper {
+  background: #ede3cf;
+  color: #302b21;
+  padding: 32px;
+  transform: rotate(2deg);
+  box-shadow: 0 25px 60px #0003;
+  position: relative;
+}
+.note-paper:before {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  border: 1px solid #88734b24;
+  pointer-events: none;
+}
+.note-address {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 25px;
+}
+.note-address > span:first-child {
+  font-size: 7px;
+  letter-spacing: 0.1em;
+  margin-top: 10px;
+  color: #6a583a;
+}
+.note-stamp {
+  border: 1px dashed #806943;
+  padding: 10px 12px;
+  font: italic 24px/1 "Instrument Serif";
+  text-align: center;
+  rotate: 8deg;
+  color: #7c613b;
+}
+.note-stamp small {
+  font: 5px Manrope;
+  letter-spacing: 0.15em;
+  display: block;
+  margin-top: 6px;
+}
+.note-topics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin: 20px 0 25px;
+}
+.note-topics button {
+  font-size: 8px;
+  padding: 9px 10px;
+  border: 1px solid #9b876440;
+  border-radius: 20px;
+  min-height: 36px;
+  color: #66573e;
+  transition: background 0.3s;
+}
+.note-topics button[aria-pressed="true"] {
+  background: #3e382b;
+  color: #f5ead4;
+  border-color: #3e382b;
+}
+.note-paper label {
+  display: block;
+  font-size: 10px;
+  margin-bottom: 12px;
+  color: #5b4b32;
+}
+.note-paper textarea {
+  width: 100%;
+  resize: vertical;
+  min-height: 110px;
+  max-height: 220px;
+  background: repeating-linear-gradient(
+    transparent 0,
+    transparent 31px,
+    #9e87632b 32px
+  );
+  border: 0;
+  border-bottom: 1px solid #9e876340;
+  font: italic 23px/32px "Instrument Serif";
+  color: #342d22;
+  border-radius: 0;
+  padding: 0 0 8px;
+}
+.note-paper textarea::placeholder {
+  color: #8b7655;
+}
+.note-paper textarea:focus-visible {
+  outline: 2px solid #8d6935;
+  outline-offset: 5px;
+}
+.note-send {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  align-items: center;
+  margin-top: 22px;
+}
+.note-send > span {
+  font-size: 7px;
+  line-height: 1.7;
+  color: #6b5b40;
+}
+.note-send > a {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 14px 17px;
+  background: #302d22;
+  color: #f7ecd8;
+  font-size: 10px;
+  white-space: nowrap;
+}
+.note-send > a:hover {
+  background: #51432c;
+}
+.contact footer {
+  border-color: #b49b6f32;
+}
+.contact footer > span {
+  color: #baa78b;
+}
+@media (max-width: 1050px) {
+  .journey-layout {
+    gap: 6%;
+    grid-template-columns: 0.8fr 1.2fr;
+  }
+  .notebook-page {
+    padding: 20px;
+    min-height: 370px;
+  }
+  .notebook-year {
+    font-size: 85px;
+  }
+  .notebook-icon {
+    width: 30px;
+    right: 20px;
+    top: 85px;
+  }
+  .notebook-page h3 {
+    font-size: 22px;
+  }
+  .journey .timeline-toggle {
+    gap: 10px;
+  }
+  .journey .timeline-node {
+    margin-right: 3px;
+  }
+  .journey .timeline-company > span {
+    font-size: 20px;
+  }
+  .journey .timeline-year {
+    width: 42px;
+    font-size: 8px;
+  }
+  .journey .timeline-details {
+    padding-left: 62px;
+  }
+  .constellation-layout {
+    gap: 5%;
+    grid-template-columns: 0.9fr 1.1fr;
+  }
+  .studio-scene {
+    height: 490px;
+  }
+  .studio-character {
+    height: 365px;
+    bottom: 55px;
+  }
+  .studio-tool {
+    padding: 8px;
+    gap: 6px;
+  }
+  .studio-tool > b {
+    width: 24px;
+    height: 24px;
+    font-size: 9px;
+  }
+  .studio-tool > span {
+    font-size: 8px;
+  }
+  .studio-word {
+    font-size: 75px;
+  }
+  .studio-note {
+    font-size: 20px;
+  }
+  .tool-0 {
+    left: 3%;
+  }
+  .tool-1 {
+    left: 0;
+  }
+  .tool-2 {
+    left: 1%;
+  }
+  .tool-3 {
+    right: 0;
+  }
+  .tool-4 {
+    right: 1%;
+  }
+  .studio-project > span {
+    font-size: 5px;
+  }
+  .studio-project {
+    font-size: 9px;
+  }
+  .rank > div {
+    gap: 15px;
+  }
+  .note-paper {
+    padding: 25px;
+  }
+  .contact-note {
+    gap: 7%;
+  }
+  .note-topics {
+    gap: 5px;
+  }
+  .note-topics button {
+    font-size: 7px;
+    padding: 9px 8px;
+  }
+}
+@media (max-width: 700px) {
+  .journey-layout {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+  .journey-notebook {
+    position: relative;
+    top: auto;
+    max-width: 340px;
+    width: 100%;
+    margin: auto;
+    padding: 12px 12px 20px;
+  }
+  .notebook-page {
+    min-height: 330px;
+  }
+  .notebook-year {
+    font-size: 95px;
+    position: absolute;
+    right: 20px;
+    top: 45px;
+    color: #c6b18e;
+  }
+  .notebook-icon {
+    position: relative;
+    top: auto;
+    right: auto;
+    margin-top: 25px;
+    width: 35px;
+  }
+  .notebook-page h3 {
+    position: relative;
+    font-size: 26px;
+    max-width: 230px;
+    margin-top: 20px;
+  }
+  .notebook-top {
+    position: relative;
+    z-index: 1;
+  }
+  .notebook-page > p {
+    font-size: 22px;
+    margin: 20px 0;
+  }
+  .notebook-caption {
+    font-size: 6px;
+    margin-top: 24px;
+  }
+  .journey .timeline-toggle {
+    padding: 24px 0;
+    gap: 11px;
+  }
+  .journey .timeline-company > span {
+    font-size: 21px;
+    letter-spacing: -0.04em;
+  }
+  .journey .timeline-year {
+    width: 42px;
+    font-size: 8px;
+  }
+  .journey .timeline-company small {
+    font-size: 9px;
+  }
+  .journey .timeline-node {
+    width: 5px;
+    height: 5px;
+  }
+  .journey .timeline-details {
+    padding-left: 68px;
+    padding-right: 5px;
+  }
+  .journey .timeline-summary {
+    font-size: 24px;
+  }
+  .journey .timeline-details li {
+    font-size: 11px;
+    line-height: 1.9;
+  }
+  .journey .timeline-toggle > svg {
+    width: 17px;
+    flex-shrink: 0;
+  }
+  .constellation {
+    padding-top: 75px;
+  }
+  .constellation-layout {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+  .constellation-copy h2 {
+    font-size: 46px;
+  }
+  .constellation .section-description {
+    font-size: 13px;
+    max-width: 330px;
+  }
+  .skill-detail {
+    min-height: 145px;
+  }
+  .skill-detail p {
+    font-size: 12px;
+    max-width: none;
+  }
+  .skill-tabs button {
+    font-size: 11px;
+  }
+  .skill-tabs button > span {
+    font-size: 8px;
+  }
+  .studio-scene {
+    height: 500px;
+  }
+  .studio-character {
+    height: 365px;
+    left: 12%;
+    width: 76%;
+    bottom: 60px;
+  }
+  .studio-label {
+    font-size: 6px;
+    left: 17px;
+    top: 20px;
+  }
+  .studio-word {
+    font-size: 78px;
+    bottom: 95px;
+  }
+  .studio-tool {
+    padding: 9px;
+    min-height: 44px;
+  }
+  .studio-tool > span {
+    font-size: 8px;
+  }
+  .tool-0 {
+    top: 17%;
+    left: 4%;
+  }
+  .tool-1 {
+    top: 36%;
+    left: 1%;
+  }
+  .tool-2 {
+    top: 59%;
+    left: 2%;
+  }
+  .tool-3 {
+    right: 2%;
+    top: 25%;
+  }
+  .tool-4 {
+    right: 2%;
+    top: 52%;
+  }
+  .studio-note {
+    right: 20px;
+    font-size: 21px;
+  }
+  .studio-insight {
+    min-height: 108px;
+  }
+  .studio-insight p {
+    font-size: 12px;
+  }
+  .studio-project {
+    font-size: 11px;
+    padding: 18px 0;
+  }
+  .studio-project > span {
+    font-size: 6px;
+  }
+  .studio-scene {
+    transform: none !important;
+  }
+  .recognition:before {
+    inset: 12px;
+  }
+  .recognition-main {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    margin-top: 35px;
+  }
+  .rank {
+    padding: 18px 0;
+  }
+  .rank .rank-edition {
+    margin-bottom: 25px;
+    font-size: 6px;
+  }
+  .rank > .label {
+    font-size: 7px;
+  }
+  .rank > div {
+    font-size: 190px;
+    gap: 25px;
+    line-height: 1.1;
+  }
+  .rank > div > span {
+    font-size: 8px;
+    margin-top: 25px;
+  }
+  .recognition-copy h2 {
+    font-size: 46px;
+  }
+  .recognition-copy p {
+    font-size: 12px;
+  }
+  .awards-row {
+    margin-top: 35px;
+    grid-template-columns: 1fr 1fr;
+  }
+  .awards-row > div {
+    padding: 24px 18px;
+  }
+  .awards-row > div + div {
+    padding-left: 24px;
+  }
+  .awards-row > div > span {
+    font-size: 58px;
+  }
+  .awards-row .sih {
+    grid-column: 1/-1;
+    border-left: 0;
+    border-top: 1px solid #6a512a45;
+    padding: 25px 18px;
+    gap: 25px;
+  }
+  .award-monogram {
+    height: 55px;
+    width: 55px;
+    font-size: 24px !important;
+  }
+  .awards-row p {
+    font-size: 11px;
+  }
+  .sih small {
+    font-size: 9px;
+  }
+  .certifications summary {
+    font-size: 7px;
+    letter-spacing: 0.08em;
+  }
+  .certifications summary > span {
+    gap: 8px;
+  }
+  .certifications li {
+    font-size: 11px;
+    line-height: 1.7;
+  }
+  .certifications ul {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .philosophy h2 {
+    padding-left: 20px;
+    font-size: 43px;
+  }
+  .principle button {
+    font-size: 17px;
+    gap: 15px;
+  }
+  .principle:has(button[aria-expanded="true"]) {
+    padding-inline: 12px;
+  }
+  .principle p {
+    padding-left: 28px;
+    font-size: 12px;
+  }
+  .contact-note {
+    grid-template-columns: 1fr;
+    gap: 35px;
+    padding: 50px 0 65px;
+  }
+  .note-intro h3 {
+    font-size: 43px;
+    margin: 20px 0;
+  }
+  .note-intro > p {
+    font-size: 12px;
+  }
+  .note-signature {
+    font-size: 34px;
+    margin-top: 20px;
+  }
+  .note-paper {
+    padding: 24px 20px;
+    transform: rotate(1deg);
+    width: 100%;
+  }
+  .note-address > span:first-child {
+    font-size: 6px;
+  }
+  .note-topics {
+    margin-top: 18px;
+    gap: 5px;
+  }
+  .note-topics button {
+    font-size: 7px;
+    padding: 10px 9px;
+    min-height: 38px;
+  }
+  .note-paper textarea {
+    font-size: 23px;
+  }
+  .note-send {
+    gap: 10px;
+  }
+  .note-send > span {
+    font-size: 7px;
+  }
+  .note-send > a {
+    font-size: 10px;
+    padding: 13px 14px;
+    gap: 8px;
+  }
+  .contact-top > .label {
+    font-size: 6px;
+  }
+  .contact footer > span {
+    font-size: 6px;
+  }
+}
+@media (max-width: 360px) {
+  .studio-scene {
+    height: 450px;
+  }
+  .studio-character {
+    height: 325px;
+  }
+  .studio-tool {
+    padding: 7px;
+    gap: 4px;
+  }
+  .studio-tool > b {
+    width: 20px;
+    height: 24px;
+    font-size: 8px;
+  }
+  .studio-tool > span {
+    font-size: 7px;
+  }
+  .studio-word {
+    font-size: 65px;
+  }
+  .studio-label {
+    font-size: 5px;
+  }
+  .studio-project {
+    font-size: 9px;
+  }
+  .studio-project > span {
+    font-size: 5px;
+  }
+  .journey .timeline-company > span {
+    font-size: 19px;
+  }
+  .journey .timeline-year {
+    width: 35px;
+  }
+  .journey .timeline-details {
+    padding-left: 60px;
+  }
+  .rank > div {
+    font-size: 166px;
+  }
+  .note-paper {
+    padding: 22px 16px;
+  }
+  .note-topics button {
+    padding: 9px 7px;
+  }
+  .note-send > span {
+    font-size: 6px;
+  }
+}
+[data-motion="off"] .studio-scene {
+  transform: none !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  .studio-scene {
+    transform: none !important;
+  }
+}
+.studio-tools {
+  pointer-events: none;
+  z-index: 5;
+}
+.studio-tool {
+  pointer-events: auto;
+  scroll-margin-block: 140px 120px;
+}
+.studio-character,
+.studio-note,
+.studio-label {
+  pointer-events: none;
+}
+.studio-floor,
+.studio-word {
+  pointer-events: none;
+}
+[data-motion="off"] .studio-tools,
+[data-motion="off"] .studio-scene {
+  transform-style: flat;
+}
+[data-motion="off"] .studio-tool {
+  transform: none;
+}
+.notebook-year {
+  color: #8c724b;
+}
+.notebook-page > p {
+  color: #675438;
+}
+.recognition .section-label,
+.recognition .section-label > span,
+.rank > .label,
+.rank .rank-edition,
+.recognition-copy p,
+.sih small {
+  color: #433622;
+}
+/* Keep animation work scoped to the chapter that is actually on screen. */
+.lab-code,
+.lab-core,
+.lab-core-ring,
+.lab-output > span,
+.lab-flow path:last-child,
+.story-photo-main,
+.story-photo-small,
+.studio-character,
+.studio-tool,
+.notebook-page {
+  animation-play-state: paused;
+}
+.chapter-visible .lab-code,
+.chapter-visible .lab-core,
+.chapter-visible .lab-core-ring,
+.chapter-visible .lab-output > span,
+.chapter-visible .lab-flow path:last-child,
+.chapter-visible .story-photo-main,
+.chapter-visible .story-photo-small,
+.chapter-visible .studio-character,
+.chapter-visible .studio-tool,
+.chapter-visible .notebook-page {
+  animation-play-state: running;
+}

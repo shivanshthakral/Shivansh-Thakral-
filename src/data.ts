@@ -131,7 +131,7 @@ export const constellations = [
     subtitle: "WHERE PEOPLE MEET SOFTWARE",
     tech: ["React", "Next.js", "TypeScript", "Three.js", "CSS"],
     description:
-      "Building expressive interfaces that make complex systems understandable. TypeScript and Three.js power this portfolio.",
+      "Building expressive interfaces that make complex systems understandable. TypeScript, React, and CSS bring this portfolio to life.",
     project: "AI-powered CRM",
   },
 ];

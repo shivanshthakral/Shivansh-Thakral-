@@ -7,8 +7,13 @@ import App from "./App";
 import "./styles.css";
 import "./responsive.css";
 import "./polish.css";
+import "./personal.css";
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <App />
   </React.StrictMode>,
 );
+
+import "./story.css";
+import "./closing.css";
+import "./playgrounds.css";

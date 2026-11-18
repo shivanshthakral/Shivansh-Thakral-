@@ -19,7 +19,8 @@ page.on("pageerror", (e) => errors.push(e.message));
 await page.goto(process.env.QA_URL || "http://127.0.0.1:5173/", {
   waitUntil: "networkidle",
 });
-await page.waitForTimeout(1700);
+await page.locator(".entrance").waitFor({ state: "detached" });
+await page.waitForTimeout(1400);
 await page
   .getByRole("button", { name: "Motion on. Turn motion off", exact: true })
   .click();
@@ -197,34 +198,52 @@ assert.equal(
   "off",
 );
 checks.push("System reduced motion");
-const canvas = reducedPage.locator(".orbit-art canvas");
-await canvas.evaluate((c) =>
-  c.dispatchEvent(new Event("webglcontextlost", { cancelable: true })),
-);
-assert.ok(await reducedPage.locator(".orbit-fallback").isVisible());
-checks.push("WebGL loss fallback");
-const unavailable = await browser.newContext();
-const unavailablePage = await unavailable.newPage();
-await unavailablePage.route(
-  /\/src\/components\/Orbit\.tsx(?:\?.*)?$/,
-  (route) => route.abort(),
-);
-await unavailablePage.goto("http://127.0.0.1:5173/", {
-  waitUntil: "networkidle",
-});
-assert.ok(await unavailablePage.locator("h1").isVisible());
-await unavailablePage.locator(".orbit-fallback").waitFor({ state: "visible" });
-await unavailablePage
-  .getByRole("button", { name: "Intelligence", exact: true })
+assert.equal(await reducedPage.locator(".entrance").count(), 0);
+checks.push("Reduced motion skips cinematic entrance");
+await reducedPage
+  .getByRole("button", { name: "Next photo", exact: true })
   .click();
 assert.equal(
-  await unavailablePage
-    .locator(".hero-universe")
-    .getAttribute("data-core-mode"),
-  "1",
+  await reducedPage
+    .locator('.photo-print[data-rank="0"] img')
+    .getAttribute("src"),
+  "/photos/adventure.webp",
 );
-checks.push("Failed 3D module preserves page and fallback material controls");
-await unavailable.close();
+await reducedPage
+  .getByRole("button", {
+    name: "Enlarge photo: A little adventure",
+    exact: true,
+  })
+  .click();
+assert.ok(
+  await reducedPage
+    .getByRole("dialog", { name: "Personal photograph", exact: true })
+    .isVisible(),
+);
+await reducedPage.keyboard.press("Escape");
+checks.push("Photo gallery selection, enlargement and Escape");
+const entranceContext = await browser.newContext();
+const entrancePage = await entranceContext.newPage();
+await entrancePage.goto("http://127.0.0.1:5173/");
+await entrancePage
+  .getByRole("dialog", { name: "Welcome to my universe" })
+  .waitFor();
+assert.equal(
+  await entrancePage.locator(".portfolio-shell").getAttribute("inert"),
+  "",
+);
+await entrancePage.getByRole("button", { name: "Skip intro" }).click();
+assert.equal(await entrancePage.locator(".entrance").count(), 0);
+await entrancePage.getByRole("button", { name: "Replay the entrance" }).click();
+await entrancePage.locator(".entrance.act-2").waitFor();
+await entrancePage.screenshot({ path: "qa/entrance-character.png" });
+await entrancePage.locator(".entrance").waitFor({ state: "detached" });
+assert.equal(
+  await entrancePage.locator(".portfolio-shell").getAttribute("inert"),
+  null,
+);
+checks.push("Entrance autoplay, skip, replay and page unlock");
+await entranceContext.close();
 const report = {
   checks,
   errors,

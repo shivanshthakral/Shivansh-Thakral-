@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { ArrowUp, ArrowUpRight, Sparkles } from "lucide-react";
+import { ArrowUp, ArrowUpRight } from "lucide-react";
 import { explore } from "../explorer.mjs";
 import Dialog from "./Dialog";
 type Answer = { title: string; text: string; href?: string; label?: string };
@@ -61,8 +61,15 @@ export default function Explorer({
       className="explorer-dialog"
     >
       <header className="explorer-head">
+        <img
+          className="agent-avatar"
+          src="/images/agent-portrait.webp"
+          alt="Illustrated portrait of Shivansh"
+          width="72"
+          height="72"
+        />
         <div className="label">
-          <span className="status-dot" /> THE INTELLIGENCE LAYER
+          <span className="status-dot" /> YOUR PORTFOLIO GUIDE
         </div>
         <h2>
           Ask <em>Shivansh.</em>
@@ -80,7 +87,7 @@ export default function Explorer({
       >
         {messages.length === 0 ? (
           <div className="chat-welcome">
-            <Sparkles size={30} />
+            <span className="agent-greeting">Hello, curious human.</span>
             <h3>A different way to get to know me.</h3>
             <p>
               Search the facts behind the projects, technologies, and journey.
