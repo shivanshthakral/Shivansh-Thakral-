@@ -2,7 +2,7 @@
 
 A personal React + TypeScript portfolio led by a photo-based full-body character, oversized name typography, warm amber art direction, a four-act cinematic entrance, original photographs, interactive project worlds, and a grounded portfolio explorer.
 
-Website: https://shivansh-apex-universe.airystingray2.chatgpt.site/
+Website: https://shivanshthakral.vercel.app/
 
 Source repository: https://github.com/shivanshthakral/Shivansh-Thakral-
 
@@ -40,9 +40,11 @@ Deploy `dist/` to any static host. The existing Sites project identity is preser
 
 ## AI status
 
-No AI provider or credentials were supplied. **Ask Shivansh is a clearly labeled, functional on-device portfolio explorer, not generative AI.** It matches questions to validated knowledge topics and cannot answer general questions or infer personal facts. This follows the explicit fallback in the brief.
+Ask Shivansh uses a server-only Gemini integration at `api/chat.js` on Vercel. It streams generated answers and remembers the five most recent exchanges sent with each question. The system prompt supplies verified portfolio facts and instructs the guide to acknowledge unknown personal details. The on-device explorer remains an explicitly labeled fallback when the API is unavailable.
 
-For future live AI, replace the retrieval adapter with a same-origin server endpoint. Keep credentials exclusively in server environment secrets; never use `VITE_*` for a secret. Send only allowlisted profile facts and bounded conversation input, enforce server-side length/role checks, rate limits, timeouts, and output bounds, and treat user messages as untrusted. Keep the local explorer available on service errors. A provider endpoint is intentionally not simulated in this static build.
+Configure `GEMINI_API_KEY` as a production **Secret** in Vercel; optionally set `GEMINI_MODEL` (default `gemini-3.1-flash-lite`). Never use a `VITE_` prefix or commit a key. `.env.example` contains names only. Vercel's GitHub integration deploys pushes to `main`. `npm run dev` previews the static frontend with the local fallback; use `vercel dev` for the server endpoint locally.
+
+The endpoint bounds input, history, and response size; enforces a 25-second timeout; rejects cross-origin browser calls; and applies a small per-instance throttle. This throttle is not a distributed global limit; Gemini account quotas still apply. Conversations are not saved by this application. Questions and recent replies are sent to Google Gemini, as disclosed in the chat. Generated answers may be inaccurate.
 
 ## Personal assets
 

@@ -3,6 +3,7 @@ import { ArrowUp, ArrowUpRight } from "lucide-react";
 import { explore } from "../explorer.mjs";
 import Dialog from "./Dialog";
 type Answer = { title: string; text: string; href?: string; label?: string };
+type Exchange = { q: string; a: Answer; source: "loading" | "ai" | "local" };
 const prompts = [
   "What has Shivansh built?",
   "Explain HealthPredict AI",
@@ -17,7 +18,10 @@ export default function Explorer({
   onClose: () => void;
 }) {
   const [input, setInput] = useState("");
-  const [messages, setMessages] = useState<{ q: string; a: Answer }[]>([]);
+  const [messages, setMessages] = useState<Exchange[]>([]);
+  const [pending, setPending] = useState(false);
+  const request = useRef<AbortController | null>(null);
+  useEffect(() => () => request.current?.abort(), []);
   const end = useRef<HTMLDivElement>(null);
   useEffect(() => {
     if (!open || !window.visualViewport) return;
@@ -45,13 +49,83 @@ export default function Explorer({
   useEffect(() => {
     end.current?.scrollIntoView({ block: "nearest" });
   }, [messages]);
-  const ask = (q: string) => {
-    if (!q.trim()) return;
+  const ask = async (q: string) => {
+    if (!q.trim() || request.current) return;
+    const question = q.trim().slice(0, 500);
+    const controller = new AbortController();
+    request.current = controller;
+    setPending(true);
+    const history = messages.slice(-5).flatMap((m) => [
+      { role: "user", text: m.q },
+      { role: "model", text: m.a.text.slice(0, 3000) },
+    ]);
     setMessages((m) => [
       ...m.slice(-19),
-      { q: q.trim().slice(0, 500), a: explore(q) },
+      {
+        q: question,
+        a: { title: "Let’s talk.", text: "Thinking…" },
+        source: "loading",
+      },
     ]);
     setInput("");
+    const update = (a: Answer, source: Exchange["source"]) =>
+      setMessages((m) => [...m.slice(0, -1), { q: question, a, source }]);
+    let text = "";
+    try {
+      const response = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          messages: [...history, { role: "user", text: question }],
+        }),
+        signal: controller.signal,
+      });
+      if (
+        !response.ok ||
+        !response.body ||
+        !response.headers.get("content-type")?.includes("application/x-ndjson")
+      )
+        throw new Error("Unavailable");
+      const reader = response.body.getReader();
+      const decoder = new TextDecoder();
+      let buffer = "";
+      let done = false;
+      while (!done) {
+        const part = await reader.read();
+        if (part.done) break;
+        buffer += decoder.decode(part.value, { stream: true });
+        const lines = buffer.split("\n");
+        buffer = lines.pop() || "";
+        for (const line of lines) {
+          if (!line.trim()) continue;
+          const event = JSON.parse(line);
+          if (event.error) throw new Error("Interrupted");
+          if (event.text) {
+            text += event.text;
+            update({ title: "A little more about Shivansh.", text }, "ai");
+          }
+          if (event.done) done = true;
+        }
+      }
+      if (!done || !text) throw new Error("Incomplete");
+    } catch {
+      if (text)
+        update(
+          {
+            title: "Connection interrupted",
+            text: `${text}\n\nThe connection paused. Please try your question again.`,
+          },
+          "ai",
+        );
+      else
+        update(
+          { ...explore(question), title: "AI unavailable · Portfolio facts" },
+          "local",
+        );
+    } finally {
+      request.current = null;
+      setPending(false);
+    }
   };
   return (
     <Dialog
@@ -75,24 +149,22 @@ export default function Explorer({
           Ask <em>Shivansh.</em>
         </h2>
         <p>Explore the work. Follow your curiosity.</p>
-        <span className="local-badge">
-          On-device portfolio explorer · No AI provider connected
-        </span>
+        <span className="local-badge">AI conversation · Powered by Gemini</span>
       </header>
       <div
         className="conversation"
         role="log"
         aria-label="Portfolio conversation"
         aria-live="polite"
+        aria-busy={pending}
       >
         {messages.length === 0 ? (
           <div className="chat-welcome">
             <span className="agent-greeting">Hello, curious human.</span>
             <h3>A different way to get to know me.</h3>
             <p>
-              Search the facts behind the projects, technologies, and journey.
-              Answers come from the supplied portfolio, right here on your
-              device.
+              Ask about the projects, technologies, and journey. Follow up,
+              compare ideas, or ask for an explanation in your own words.
             </p>
             <div className="prompt-grid">
               {prompts.map((p) => (
@@ -108,9 +180,15 @@ export default function Explorer({
             <div className="exchange" key={i}>
               <p className="question">{m.q}</p>
               <div className="answer">
-                <span className="label">ST / PORTFOLIO KNOWLEDGE</span>
+                <span className="label">
+                  {m.source === "local"
+                    ? "ST / VERIFIED PORTFOLIO FACTS"
+                    : m.source === "loading"
+                      ? "ST / THINKING"
+                      : "ST / AI PORTFOLIO GUIDE"}
+                </span>
                 <h3>{m.a.title}</h3>
-                <p>{m.a.text}</p>
+                <p style={{ whiteSpace: "pre-wrap" }}>{m.a.text}</p>
                 {m.a.href && (
                   <a href={m.a.href} onClick={onClose}>
                     {m.a.label}
@@ -143,15 +221,15 @@ export default function Explorer({
         />
         <button
           type="submit"
-          disabled={!input.trim()}
+          disabled={!input.trim() || pending}
           aria-label="Send question"
         >
           <ArrowUp size={20} />
         </button>
       </form>
       <p className="chat-footnote">
-        Fact-based search, not generative AI. Your questions stay in this
-        browser session.
+        AI can make mistakes. Your questions and recent replies are sent to
+        Google Gemini. This site does not save your conversation.
       </p>
     </Dialog>
   );

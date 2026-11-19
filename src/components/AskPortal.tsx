@@ -39,9 +39,9 @@ export default function AskPortal({ open }: { open: () => void }) {
           Ask Shivansh <ArrowUpRight size={25} />
         </button>
         <span className="portal-disclosure">
-          ON-DEVICE KNOWLEDGE EXPLORER
+          A CONVERSATION, POWERED BY GEMINI
           <br />
-          Fact-based answers. No AI provider connected.
+          Ask naturally. Follow the thought. Keep the conversation going.
         </span>
       </div>
     </section>

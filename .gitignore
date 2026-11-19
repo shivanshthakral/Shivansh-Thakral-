@@ -6,3 +6,4 @@ qa/
 *.log
 *.tsbuildinfo
 /*.jpeg
+.vercel/
