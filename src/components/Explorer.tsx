@@ -154,6 +154,7 @@ export default function Explorer({
       <div
         className="conversation"
         role="log"
+        tabIndex={0}
         aria-label="Portfolio conversation"
         aria-live="polite"
         aria-busy={pending}
