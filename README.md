@@ -67,7 +67,7 @@ Production dependency audit: zero known vulnerabilities in the tested install. n
 
 ## Interactive story chapters
 
-The approved opening is followed by interactive illustrated project workflows, a three-step build workbench, an engineering-studio portrait with three narrative chapters, the original-photo gallery, and a portrait-led Ask Shivansh section. Implementation lives in `ProjectShowcase.tsx`, `BuildLab.tsx`, `AboutStory.tsx`, `AskPortal.tsx`, and the corresponding stylesheets. All source photographs and generated PNG masters are preserved; the page serves optimized WebP copies.
+The approved opening is followed by illustrated project worlds, a three-scene personal process story, an engineering-studio portrait, the original-photo gallery, and a portrait-led Ask Shivansh section. Implementation lives in `ProjectShowcase.tsx`, `MakerStudio.tsx`, `AboutStory.tsx`, `AskPortal.tsx`, and the corresponding stylesheets. All source photographs and generated PNG masters are preserved; the page serves optimized WebP copies.
 
 Run `node scripts/review-story.mjs` with the dev server to verify the new chapter and process interactions and capture desktop/mobile compositions. The original opening is unchanged by this expansion. See `docs/PERSONAL-REDESIGN.md` for artwork provenance and verification scope.
 
@@ -77,4 +77,12 @@ Run `node scripts/review-story.mjs` with the dev server to verify the new chapte
 
 `JourneyNote.tsx`, `ToolStudio.tsx`, and `ContactNote.tsx` complete the lower-page experience with career field notes, selectable technologies, and a safely encoded email draft. `playgrounds.css` carries the final brighter art direction. New illustration roles are imaginative, not factual credentials.
 
-Run `node scripts/review-playgrounds.mjs` and `node scripts/review-closing.mjs` for project stages, example selectors, character loading, About identity, technology links, email-draft encoding, and desktop/mobile visual checks. Production hosting uses the existing Sites identity; source is also maintained in the GitHub repository linked above.
+Run `node scripts/review-playgrounds.mjs` and `node scripts/review-closing.mjs` for project stages, example selectors, character loading, About identity, technology links, email-draft encoding, and desktop/mobile visual checks. Production hosting uses Vercel, automatically deployed from this repository's `main` branch.
+
+## Visual polish: the maker's story
+
+`MakerStudio.tsx` replaces the abstract workbench with a character-led visual essay: spark, craft, human. A glass-like idea unfolds into a miniature interface. Playback is opt-in, pauses offscreen and in background tabs, stops after the final chapter, and respects the site motion setting. Manual chapter controls remain available with reduced motion. This is an illustrated process story, not an application builder or a product demo.
+
+`atelier.css` adds individual art backdrops to the three project characters and a folded-ribbon sculpture that responds to the existing philosophy controls. The approved introduction and original-photo gallery remain intact. The new maker artwork is served as a lazy-loaded 101 KB WebP; its PNG master is retained. Artwork provenance and the generation prompt are in `docs/ATELIER-POLISH.md`.
+
+Run `node scripts/review-atelier.mjs` with the local server for four-width screenshots, image loading, chapter controls, playback/pause, motion-off, keyboard activation, overflow and accessibility checks. Physical iPhone testing still requires real hardware.

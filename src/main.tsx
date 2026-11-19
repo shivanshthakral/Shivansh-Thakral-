@@ -17,3 +17,4 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
 import "./story.css";
 import "./closing.css";
 import "./playgrounds.css";
+import "./atelier.css";

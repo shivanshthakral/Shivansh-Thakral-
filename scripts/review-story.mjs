@@ -45,18 +45,21 @@ try {
       .screenshot({ path: `qa/story/about-human-${width}.png` });
     await page.getByRole("tab", { name: "01 The engineer" }).click();
     await page
-      .locator(".lab-controls")
-      .getByRole("button", { name: "02 Connect" })
+      .locator(".maker-chapters")
+      .getByRole("button", { name: "02 The craft" })
       .click();
-    assert.match(await page.locator(".lab-narration").innerText(), /structure/);
-    await page.getByRole("button", { name: "Next build step" }).click();
     assert.match(
-      await page.locator(".lab-narration").innerText(),
-      /Make it useful/,
+      await page.locator(".maker-narrative").innerText(),
+      /structure/,
+    );
+    await page.getByRole("button", { name: "03 The human" }).click();
+    assert.match(
+      await page.locator(".maker-narrative").innerText(),
+      /helps someone/,
     );
     await page
-      .locator(".lab-controls")
-      .getByRole("button", { name: "01 Question" })
+      .locator(".maker-chapters")
+      .getByRole("button", { name: "01 The spark" })
       .click();
     await page.locator(".portal-button").click();
     assert.ok(await page.locator(".agent-avatar").isVisible());

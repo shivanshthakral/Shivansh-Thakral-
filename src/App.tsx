@@ -28,11 +28,12 @@ import Entrance from "./components/Entrance";
 import PersonalHero from "./components/PersonalHero";
 import LifeGallery from "./components/LifeGallery";
 import AboutStory from "./components/AboutStory";
-import BuildLab from "./components/BuildLab";
+import MakerStudio from "./components/MakerStudio";
 import AskPortal from "./components/AskPortal";
 import ToolStudio from "./components/ToolStudio";
 import JourneyNote from "./components/JourneyNote";
 import ContactNote from "./components/ContactNote";
+import CuriositySculpture from "./components/CuriositySculpture";
 import { useSceneScroll } from "./useSceneScroll";
 
 const repositories: Record<string, string> = {
@@ -303,7 +304,7 @@ export default function App() {
               More experiments live on GitHub <ArrowUpRight size={17} />
             </a>
           </section>
-          <BuildLab />
+          <MakerStudio motion={motion} />
           <AboutStory />
           <LifeGallery />
           <section className="journey section-pad" id="journey">
@@ -502,13 +503,16 @@ export default function App() {
           <section className="philosophy light-section section-pad" id="beyond">
             <Label number="06">BEYOND THE CODE</Label>
             <div className="philosophy-layout">
-              <h2 className="reveal">
-                The best part
-                <br />
-                of engineering?
-                <br />
-                <em>The possibility.</em>
-              </h2>
+              <div className="philosophy-art">
+                <h2 className="reveal">
+                  The best part
+                  <br />
+                  of engineering?
+                  <br />
+                  <em>The possibility.</em>
+                </h2>
+                <CuriositySculpture chapter={philosophy} />
+              </div>
               <div className="principles">
                 {[
                   {

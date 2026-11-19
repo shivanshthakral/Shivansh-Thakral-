@@ -98,7 +98,7 @@ export default function ProjectShowcase({
   const chapter = s.steps[step];
   return (
     <article
-      className={`project project-${p.color} project-interactive reveal`}
+      className={`project project-${p.color} project-interactive reveal project-chapter-${step}`}
     >
       <div className={`project-visual project-playground playground-${p.id}`}>
         <div className="playground-grid" />
@@ -112,6 +112,22 @@ export default function ProjectShowcase({
           <p className="playground-description">{s.description}</p>
         </div>
         <div className="project-character-stage">
+          <div className={`project-world world-${p.id}`} aria-hidden="true">
+            <img
+              src={`/images/projects/${p.id}.webp`}
+              alt=""
+              width="1536"
+              height="1024"
+              loading="lazy"
+            />
+            <span className="world-caption">
+              {p.id === "healthpredict"
+                ? "THE HUMAN SIDE OF DATA"
+                : p.id === "contentstack"
+                  ? "IDEAS, IN FLOW"
+                  : "EVERY CONNECTION COUNTS"}
+            </span>
+          </div>
           <span className="project-scene-word" aria-hidden="true">
             {p.id === "healthpredict"
               ? "CARE."
